@@ -1,10 +1,10 @@
-# from fastapi import FastAPI
+from fastapi import FastAPI
 
-# app=FastAPI() #FastAPI 物件
+app=FastAPI() #FastAPI 物件
 
-# @app.get("/data")
+@app.get("/data")
 
-# def index():
-#     return {"x":3, "y":4}
+def index():
+    return {"x":3, "y":4}
 
 #easiest example
