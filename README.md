@@ -13,74 +13,19 @@ This project serves as a hands-on introduction to backend development with FastA
 
 ## Getting Started
 
-### 1. Clone the repository
-
 ```bash
 git clone https://github.com/ylx959/fastapi-intro.git
 cd fastapi-intro
-```
-
-### 2. Create a virtual environment
-
-Create a virtual environment for project dependencies:
-
-```bash
 python3 -m venv .venv
+.venv/bin/pip install -r requirements.txt
+./dev.sh                  # http://127.0.0.1:8000
 ```
 
-This only needs to be done once.
+The venv and the install only need to run once; re-run the install whenever
+`requirements.txt` changes. `./dev.sh` uses `.venv/bin/uvicorn` directly, so
+there is no need to `source .venv/bin/activate`.
 
-### 3. Activate the virtual environment
-
-Every time you open a new terminal session for this project, activate the virtual environment:
-
-```bash
-source .venv/bin/activate
-```
-
-After activation, your terminal should look similar to:
-
-```text
-(.venv) user@machine fastapi-intro %
-```
-
-To leave the virtual environment:
-
-```bash
-deactivate
-```
-
-### 4. Install dependencies
-
-Upgrade pip, then install the project and its dependencies declared in
-`pyproject.toml`:
-
-```bash
-python -m pip install --upgrade pip
-python -m pip install -e .
-```
-
-## Running the Server
-
-Start the FastAPI development server:
-
-```bash
-./dev.sh
-```
-
-The API will be available locally at:
-
-```text
-http://127.0.0.1:8000
-```
-
-FastAPI automatically provides interactive API documentation:
-
-```text
-Swagger UI: http://127.0.0.1:8000/docs
-ReDoc:      http://127.0.0.1:8000/redoc
-```
-
+Interactive docs: `/docs` (Swagger UI), `/redoc` (ReDoc).
 
 ## Notes
 

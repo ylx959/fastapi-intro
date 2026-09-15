@@ -1,0 +1,4 @@
+# Direct dependencies. Install with:
+#   .venv/bin/pip install -r requirements.txt
+fastapi==0.141.1
+uvicorn[standard]==0.53.0
