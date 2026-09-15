@@ -65,7 +65,7 @@ python -m pip install -e .
 Start the FastAPI development server:
 
 ```bash
-uvicorn main:app --reload
+./dev.sh
 ```
 
 The API will be available locally at:
