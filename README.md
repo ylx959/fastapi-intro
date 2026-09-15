@@ -49,15 +49,15 @@ To leave the virtual environment:
 ```bash
 deactivate
 ```
+
 ### 4. Install dependencies
 
-
-If setting up the project from scratch:
+Upgrade pip, then install the project and its dependencies declared in
+`pyproject.toml`:
 
 ```bash
-
-python -m pip install fastapi "uvicorn[standard]"
-
+python -m pip install --upgrade pip
+python -m pip install -e .
 ```
 
 ## Running the Server
@@ -65,23 +65,19 @@ python -m pip install fastapi "uvicorn[standard]"
 Start the FastAPI development server:
 
 ```bash
-
 uvicorn main:app --reload
 ```
 
 The API will be available locally at:
 
 ```text
-
 http://127.0.0.1:8000
 ```
 
 FastAPI automatically provides interactive API documentation:
 
 ```text
-
 Swagger UI: http://127.0.0.1:8000/docs
-
 ReDoc:      http://127.0.0.1:8000/redoc
 ```
 
