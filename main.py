@@ -17,7 +17,7 @@ def member():
     return RedirectResponse("https://www.google.com/")
 
 #統一處理靜態檔案 擺在下方才不會影響其他的路由
-app.mount("/",StaticFiles(directory="www",html=True))
+app.mount("/",StaticFiles(directory="public",html=True))
 
 
 
