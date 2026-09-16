@@ -5,12 +5,22 @@
         <title>This is for test</title>
     </head>
     <body>
-        <h2>以下提供幾個超連結</h2>
-        <div>
-            <a href="http://127.0.0.1:8000/square?num=10" >計算十的平方</a>
+        <h2>以下提供計算平方</h2>
+        <form action="/square" >
+            <input type="number" name="number" placeholder="Enter a number">
+
+            <button type="submit">計算平方</button>
+        </form>
+
+        <h2>計算兩數相乘</h2>
+        <form action="/multiply">
+            <input type="number" name="n1" placeholder="Enter a number">
             <br/>
-            <a href="http://127.0.0.1:8000/square?num=20" >計算二十的平方</a>
-        </div>
+            <input type="number" name="n2" placeholder="Enter a number">
+            <br/>
+            <button type="submit">相乘</button>
+        </form>
+
         <h2>連接到另一個網頁</h2>
         <div>
             <a href="/page.html" target="_blank">picture.com</a>
