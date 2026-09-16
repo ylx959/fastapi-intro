@@ -18,6 +18,3 @@ def member():
 
 #統一處理靜態檔案 擺在下方才不會影響其他的路由
 app.mount("/",StaticFiles(directory="www",html=True))
-
-
-
