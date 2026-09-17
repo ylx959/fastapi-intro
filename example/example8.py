@@ -15,24 +15,11 @@ def testGET():
 def testPost():
     return {"ok":True,"method":"POST"}
 
-@app.get("/square")
-def square(number:Annotated[int,Query(gt=0,lt=100)]):
-    result=number*number
-    return {"data":result}
-
-@app.get("/multiply")
-def multiply(n1:Annotated[int,None],n2:Annotated[int,None]):
-    result=n1*n2
-    return {"result":result}
-
-@app.get("/member")
-def member():
-    return RedirectResponse("https://www.google.com/")
-
-#統一處理靜態檔案 擺在下方才不會影響其他的路由
-app.mount("/",StaticFiles(directory="public",html=True))
-
-
-
-
-
+#主要在說明用前端js 可以用不同方法接到後端
+# <script>
+#     async function connectGet(){
+#         let response=await fetch("/test",{method:"可以用GET 或是POST"});
+#         let data=await response.json();
+#         console.log(data)
+#     }
+# </script>
