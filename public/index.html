@@ -6,21 +6,13 @@
     </head>
     <body>
         <h2>以下使用fetch測試不同連線方法</h2>
-        <button onclick="connectGet();">GET連線</button>
-        <script>
-            async function connectGet(){
-                let response=await fetch("/test",{method:"GET"});
-                let data=await response.json();
-                console.log(data)
-            }
-        </script>
-
-        <br/>
-
         <button onclick="connectPost();">POST連線</button>
         <script>
             async function connectPost(){
-                let response=await fetch("/test",{method:"POST"});
+                let response=await fetch("/add",{
+                    method:"POST",
+                    body:JSON.stringify({"n1":5,"n2":3})
+                });
                 let data=await response.json();
                 console.log(data)
             }
