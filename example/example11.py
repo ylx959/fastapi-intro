@@ -61,3 +61,27 @@ def delete_message(id):
 
 # 靜態檔案
 app.mount("/", StaticFiles(directory="public", html=True))
+
+#搭配前端
+
+# <h2>使用fetch 測試restful APIS%</h2>
+#     <button onclick="postMessage();">Post message</button>
+#     <button onclick="getMessage();">Get message</button>
+#     <button onclick="deleteMessage();">Delete message</button>
+#     <script>
+#         async function postMessage(){
+#             let response=await fetch("api/message",{method:"Post",body:JSON.stringify({"author":"John","content":"測試"})});
+#             let result=await response.json();
+#             console.log(result);
+#         }
+#         async function getMessage(){
+#             let response=await fetch("api/message",{method:"get"});
+#             let result=await response.json();
+#             console.log(result);
+#         }
+#         async function deleteMessage(){
+#             let response=await fetch("api/message/5",{method:"delete"});
+#             let result=await response.json();
+#             console.log(result);
+#         }
+#     </script>
