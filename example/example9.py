@@ -1,6 +1,8 @@
 from fastapi import FastAPI,Body
 import json
 
+app=FastAPI()
+
 # 在前端先把json 轉為string 傳進後端 再把 string 用json.load(string)
 # 轉成json去做應用
 

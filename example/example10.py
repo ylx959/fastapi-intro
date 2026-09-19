@@ -6,6 +6,7 @@ con=mysql.connector.connect(
     host="localhost",
     database="fastapi"
 )
+
 print("DataBase Ready")
 
 #準備網站後端系統
@@ -23,7 +24,3 @@ def createMessage(
     cursor.execute("INSERT into message(author,content) values(%s,%s)",[author,content])
     con.commit()
     return {"ok":True}
-
-
-
-
