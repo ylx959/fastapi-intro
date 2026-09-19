@@ -8,10 +8,6 @@ app=FastAPI() #FastAPI 物件
 def index():
     return {"data":"Home Page"}
 
-from typing import Annotated
-from fastapi import FastAPI, Path
-
-app = FastAPI()
 
 #處理路徑 /square/number
 @app.get("/square/{number}")
