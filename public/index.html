@@ -5,48 +5,49 @@
         <title>This is for test</title>
     </head>
     <body>
-    <h2>留言系統</h2>
+    <h2>發送Requests測試結果</h2>
     <div>
-        姓名<input type="text" id="name"/>
-        <br/>
-        內容<input type="text" id="content"/>
-        <br/>
-        <button onclick="postMessage()">送出</button>
-        <hr/>
+        <button onclick="signup()">註冊帳號</button>
+        <button onclick="signin()">登入帳號</button>
+        <button onclick="checkstatus()">檢查登入狀態</button>
+        <button onclick="signout()">登出</button>
     </div>
-    <div id="board"></div>
     <script>
-        async function postMessage(){
-            let name=document.querySelector("#name").value;
-            let content=document.querySelector("#content").value;
+        async function signup(){
+            let response=await fetch("/api/member",{
+                method:"post",
+                body:JSON.stringify({"name":"ply","email":"ply@ply.com","password":"ply"})
 
-            let response=await fetch("api/message",{method:"Post",body:JSON.stringify({"author":name,"content":content})});
+            });
             let result=await response.json();
-            if(result.ok){
-                getMessage();
-            }
-            console.log(result);
+            console.log("註冊結果",result);
         }
-        async function getMessage(){
-            let response=await fetch("api/message",{method:"get"});
+        async function signin(){
+            let response=await fetch("/api/member/auth",{
+                method:"PUT",
+                body:JSON.stringify({"email":"ply@ply.com","password":"ply"})
+
+            });
             let result=await response.json();
-            let board=document.querySelector("#board");
-            board.innerHTML="";
-            for(let i=0;i<result.length;i++){
-                board.innerHTML+="<div>"+result[i].author+": "+result[i].content+"<button onclick='deleteMessage("+result[i].id+")'>X</button>"+"</div>";
-            }
-            console.log(result);
+            console.log("註冊結果",result);
         }
-        async function deleteMessage(id){
-            let response=await fetch("api/message/"+id,{method:"delete"});
+        async function checkstatus() {
+            let response=await fetch("/api/member/auth",{
+                method:"GET",
+            });
             let result=await response.json();
-            if(result.ok){
-                getMessage();
-            }
-            console.log(result);
+            console.log("登入狀態",result);
         }
-        getMessage();
+        async function signout() {
+            let response=await fetch("/api/member/auth",{
+                method:"DELETE",
+            });
+            let result=await response.json();
+            console.log("登出狀態",result);
+        }
     </script>
+    
+    
     </body>
         
 </html>

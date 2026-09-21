@@ -1,3 +1,45 @@
+#  <h2>發送Requests測試結果</h2>
+#     <div>
+#         <button onclick="signup()">註冊帳號</button>
+#         <button onclick="signin()">登入帳號</button>
+#         <button onclick="checkstatus()">檢查登入狀態</button>
+#         <button onclick="signout()">登出</button>
+#     </div>
+#     <script>
+#         async function signup(){
+#             let response=await fetch("/api/member",{
+#                 method:"post",
+#                 body:JSON.stringify({"name":"ply","email":"ply@ply.com","password":"ply"})
+
+#             });
+#             let result=await response.json();
+#             console.log("註冊結果",result);
+#         }
+#         async function signin(){
+#             let response=await fetch("/api/member/auth",{
+#                 method:"PUT",
+#                 body:JSON.stringify({"email":"ply@ply.com","password":"ply"})
+
+#             });
+#             let result=await response.json();
+#             console.log("註冊結果",result);
+#         }
+#         async function checkstatus() {
+#             let response=await fetch("/api/member/auth",{
+#                 method:"GET",
+#             });
+#             let result=await response.json();
+#             console.log("登入狀態",result);
+#         }
+#         async function signout() {
+#             let response=await fetch("/api/member/auth",{
+#                 method:"DELETE",
+#             });
+#             let result=await response.json();
+#             console.log("登出狀態",result);
+#         }
+#     </script>
+
 #準備資料庫連線
 import mysql.connector
 con=mysql.connector.connect(
