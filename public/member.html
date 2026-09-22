@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>會員頁面</title>
+</head>
+<body>
+    <h3>會員頁面</h3>
+    <div>歡迎光臨,<span id="name"></span></div>
+    <script>
+        async function checkstatus(){
+            let response=await fetch("/api/member/auth",{method:"GET"});
+
+            let result=await response.json();
+
+            if(result.ok){//使用者已經登入,顯示登入的身份
+                document.querySelector("#name").textContent=result.name;
+            }else{//使用者為登入
+                window.location="/"//強迫回首頁
+            }
+        }
+        checkstatus();//立刻呼叫檢查登入狀態的函式
+    </script>
+</body>
+</html>

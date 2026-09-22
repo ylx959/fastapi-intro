@@ -5,47 +5,59 @@
         <title>This is for test</title>
     </head>
     <body>
-    <h2>發送Requests測試結果</h2>
-    <div>
-        <button onclick="signup()">註冊帳號</button>
-        <button onclick="signin()">登入帳號</button>
-        <button onclick="checkstatus()">檢查登入狀態</button>
-        <button onclick="signout()">登出</button>
-    </div>
-    <script>
-        async function signup(){
-            let response=await fetch("/api/member",{
-                method:"post",
-                body:JSON.stringify({"name":"ply","email":"ply@ply.com","password":"ply"})
+        <h2>登入帳號</h2>
+        <div>
+            信箱<input type="text" id="signin-email"/><br/>
+            密碼<input type="password" id="signin-password"/><br/>
+            <button onclick="signin();">登入</button>
+        </div>
+        <script>
+            async function signin(){
+                let email=document.querySelector("#signin-email").value;
+                let password=document.querySelector("#signin-password").value
 
-            });
-            let result=await response.json();
-            console.log("註冊結果",result);
-        }
-        async function signin(){
-            let response=await fetch("/api/member/auth",{
-                method:"PUT",
-                body:JSON.stringify({"email":"ply@ply.com","password":"ply"})
+                let response=await fetch("/api/member/auth",{method:"PUT",body:JSON.stringify({"email":email,"password":password})});
 
-            });
-            let result=await response.json();
-            console.log("註冊結果",result);
-        }
-        async function checkstatus() {
-            let response=await fetch("/api/member/auth",{
-                method:"GET",
-            });
-            let result=await response.json();
-            console.log("登入狀態",result);
-        }
-        async function signout() {
-            let response=await fetch("/api/member/auth",{
-                method:"DELETE",
-            });
-            let result=await response.json();
-            console.log("登出狀態",result);
-        }
-    </script>
+                let result=await response.json();
+                
+                if(result.ok){
+                    alert("登入成功");
+                    window.location="/member.html";//把使用者導向到會員頁面
+                }
+                else{
+                    alert("登入失敗");
+                }
+            }
+        </script>
+        <h2>註冊帳號</h2>
+        <div>
+            姓名<input type="text" id="signup-name" /><br/>
+            信箱<input type="text" id="signup-email"/><br/>
+            密碼<input type="password" id="signup-password"><br/>
+            <button onclick="signup()">註冊</button>
+        </div>
+        <script>
+            async function signup(){
+                let name=document.querySelector("#signup-name").value;
+                let email=document.querySelector("#signup-email").value;
+                let password=document.querySelector("#signup-password").value;
+                 
+                let response=await fetch("/api/member",{
+                    method:"post",
+                    body:JSON.stringify({"name":name,"email":email,"password":password})
+
+                });
+
+                let result=await response.json();
+
+                if(result.ok){
+                    alert("註冊成功")
+                }else{
+                    alert("註冊失敗")
+                }
+            }
+            
+        </script>
     
     
     </body>

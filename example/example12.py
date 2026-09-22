@@ -77,7 +77,7 @@ def create_message(body=Body(None)):
         "INSERT INTO message(author, content) VALUES (%s, %s)",
         [author, content]
     )
-
+    
     con.commit()
 
     return {"ok": True}
