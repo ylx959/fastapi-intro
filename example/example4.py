@@ -18,6 +18,7 @@ def square(
     return {"result": result}
 
 #處理路徑 /multiply?n1=number&n2=number
+#要求字串
 @app.get("/multiply")
 def multiply(n1:
              Annotated[int,Query(ge=0,le=100)],
